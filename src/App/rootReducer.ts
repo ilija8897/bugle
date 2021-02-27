@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
 import { ChatDuck } from 'modules/Chat';
-import { AuthDuck } from 'modules/Auth';
+import * as AppDuck from './App.duck';
 
-const rootReducer = combineReducers({ chat: ChatDuck.chatSliceReducer, auth: AuthDuck.authSliceReducer });
+const rootReducer = combineReducers({ chat: ChatDuck.chatSliceReducer, app: AppDuck.appSliceReducer });
 
 export default rootReducer;

@@ -4,7 +4,7 @@ export const Input = styled.input`
     display: block;
     margin-bottom: 16px;
     border: 1px solid #999;
-    padding: 4px 12px;
+    padding: 5px 12px;
     border-radius: 8px;
     box-shadow: none;
     line-height: 1.4;

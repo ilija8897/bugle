@@ -2,25 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 import { ChatTextfield } from "components/ChatTextfield";
 import style from "./main.module.scss";
 import { useDispatch } from 'react-redux';
-import {sendMessage} from './Chat.duck';
+import {sendMessage, pushHistoryMessages} from './Chat.duck';
 import { io } from "socket.io-client";
 import { MessageForm } from "components/MessageForm";
 
-const socket = io("https://bugle8897.herokuapp.com");
+const socket = io(`${process.env.endpoint}`);
 
 export const Chat: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    socket.emit('messages_history');
     socket.on('add_message', message => {
       message && dispatch(sendMessage(message));
-    })
-    socket.on('connect', message => {
-      socket.send('Hello!!');
-    })
+    });
+    socket.on('push_history', messages => {
+      const formatedMessages = messages.map(item => {
+        return {id: item.user, message: item.text}
+      })
+      
+      messages && dispatch(pushHistoryMessages(formatedMessages));
+    });
+
 
     return (() => {
       socket.close();
-    })
+    });
   }, []);
   
   return (

@@ -3,11 +3,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import { logger } from 'redux-logger';
 
 import { ChatDuck } from 'modules/Chat';
-import { AuthDuck } from 'modules/Auth';
+import * as AppDuck from './App.duck';
 
 const reducer = {
     chat: ChatDuck.chatSliceReducer,
-    auth: AuthDuck.authSliceReducer
+    app: AppDuck.appSliceReducer
 };
 
 export const store = configureStore({

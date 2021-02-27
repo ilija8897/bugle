@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import {useDispatch} from 'react-redux';
-import { userLogin } from './Auth.duck';
+import { userLogin } from '../../App/App.duck';
 import { Input, Button } from 'components/ui'
 
 import style from './Auth.module.scss';
@@ -12,7 +12,6 @@ export const Auth = () => {
 
     const [name, setName] = useState('');
     const [pass, setPass] = useState('');
-    console.log(process.env.endpoint);
     
     const handleLogin = () => {
         //TODO вынести запросы в service функции

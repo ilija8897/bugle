@@ -20,9 +20,12 @@ const chatReducer = createSlice({
     reducers: {
         sendMessage: (state, action) => {
             state.messages = [...state.messages, action.payload];
+        },
+        pushHistoryMessages: (state, action) => {
+            state.messages = action.payload;
         }
     }
 });
 
 export const { actions: chatSliceActions, reducer: chatSliceReducer } = chatReducer;
-export const { sendMessage } = chatSliceActions;
+export const { sendMessage, pushHistoryMessages } = chatSliceActions;
