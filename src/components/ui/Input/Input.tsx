@@ -6,6 +6,8 @@ type InputProps = {
     type?: 'text' | 'name' | 'password' | 'email';
     defaultValue: string;
     placeholder?: string;
+    required?: boolean;
+    pattern?: string;
     onInput?: (e: SyntheticEvent) => void;
 }
  

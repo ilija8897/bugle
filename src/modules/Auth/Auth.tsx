@@ -10,6 +10,7 @@ import style from './Auth.module.scss';
 export const Auth = () => {
     const dispatch = useDispatch();
 
+    const [error, setError] = useState<string | null>(null);
     const [name, setName] = useState('');
     const [pass, setPass] = useState('');
     
@@ -20,11 +21,11 @@ export const Auth = () => {
             pass: pass
         }).then(resp => {
             console.log(resp);
-            
+            dispatch(userLogin(true));     
         }).catch(err => {
             console.log(err);
+            setError('Неверный логин или пароль');
         });
-        dispatch(userLogin(true));
     }
 
     const handleChangeName = (e) => {
@@ -39,6 +40,7 @@ export const Auth = () => {
         <div className={style.form}>
             <Input defaultValue={name} onInput={handleChangeName} type='name' />
             <Input defaultValue={pass} onInput={handleChangePassword} type="password"/>
+            {error}
             <Button onClick={handleLogin}>Login</Button>
         </div>
     )

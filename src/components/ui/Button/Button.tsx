@@ -3,8 +3,9 @@ import React, { FC, memo } from "react";
 import * as S from './Button.styled';
 
 interface ButtonProps {
-    onClick: () => void;
+    onClick?: () => void;
     children: string;
+    type?: 'submit'
 }
 
 export const Button: FC<ButtonProps> = memo((props) => {
